@@ -13,7 +13,6 @@ import serializer.deserializer.XmlUserDeserializer;
 import serializer.deserializer.test.user.User;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -37,7 +36,7 @@ public class SerializerDeserializerTest {
     @Test
     public void JsonUserTest() {
         Collection<User> userCollection = newUsers();
-        File jsonFile = new File("users.json");
+        File jsonFile = new File("src/test/resources/users-test.json");
         UserSerializer serializer = new JsonUserSerializer();
         serializer.serialize(userCollection, jsonFile.getName());
         Assertions.assertTrue((jsonFile).exists());
@@ -50,7 +49,7 @@ public class SerializerDeserializerTest {
     @Test
     public void XmlUserTest() {
         Collection<User> userCollection = newUsers();
-        File xmlFile = new File("users.xml");
+        File xmlFile = new File("src/test/resources/users-test.xml");
         UserSerializer serializer = new XmlUserSerializer();
         serializer.serialize(userCollection, xmlFile.getName());
         Assertions.assertTrue((xmlFile).exists());
@@ -63,7 +62,7 @@ public class SerializerDeserializerTest {
     @Test
     public void CsvUserTest() {
         Collection<User> userCollection = newUsers();
-        File csvFile = new File("users.csv");
+        File csvFile = new File("src/test/resources/users-test.csv");
         UserSerializer serializer = new CsvUserSerializer();
         serializer.serialize(userCollection, csvFile.getName());
         Assertions.assertTrue((csvFile).exists());
@@ -71,20 +70,5 @@ public class SerializerDeserializerTest {
         UserDeserializer deserializer = new CsvUserDeserializer();
         Collection<User> deserializeUsers = deserializer.deserialize(csvFile.getName());
         Assertions.assertTrue((userCollection).containsAll(deserializeUsers));
-    }
-
-    @Test
-    void usersCsvExistsTest() throws IOException {
-        Assertions.assertTrue(new File("users.csv").exists());
-    }
-
-    @Test
-    void usersXmlExistsTest() throws IOException {
-        Assertions.assertTrue(new File("users.xml").exists());
-    }
-
-    @Test
-    void usersJsonExistsTest() throws IOException {
-        Assertions.assertTrue(new File("users.json").exists());
     }
 }

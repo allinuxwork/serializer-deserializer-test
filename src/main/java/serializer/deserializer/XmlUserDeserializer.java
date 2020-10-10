@@ -2,6 +2,7 @@ package serializer.deserializer;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Collection;
 import com.fasterxml.jackson.databind.MappingIterator;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -19,6 +20,6 @@ public class XmlUserDeserializer implements UserDeserializer {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return null;
+        return new ArrayList<>();
     }
 }

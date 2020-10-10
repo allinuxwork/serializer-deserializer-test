@@ -1,5 +1,6 @@
 package serializer.deserializer;
 import serializer.deserializer.test.user.User;
+import java.util.ArrayList;
 import java.util.Collection;
 import com.fasterxml.jackson.databind.MappingIterator;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -19,6 +20,6 @@ public class JsonUserDeserializer implements UserDeserializer {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return null;
+        return new ArrayList<>();
     }
 }
